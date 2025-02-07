@@ -8,11 +8,12 @@ function App() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
+  const apiURL = "https://madi-chatbot-api.fly.dev/";
   // Initialize the chatbot when the component mounts
   useEffect(() => {
     const initializeChatbot = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/chatbot/initialize", {
+        const response = await fetch(`${apiURL}api/chatbot/initialize`, {
           method: "GET"
         });
   
@@ -41,7 +42,7 @@ function App() {
     setIsTyping(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/chatbot/prompt", {
+      const response = await fetch(`${apiURL}api/chatbot/prompt`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
