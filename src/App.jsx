@@ -68,7 +68,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100 p-28">
+    <div className="flex flex-col h-screen bg-gray-100 p-4 md:p-28">
       <div className="flex flex-col h-full w-full bg-white shadow-lg rounded-lg">
         <header className="bg-pink-500 text-white p-4 text-center font-bold rounded-t-lg">
           MADI Chatbot
