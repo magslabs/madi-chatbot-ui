@@ -7,6 +7,7 @@ function App() {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const apiURL = "https://madi-chatbot-api.fly.dev";
   // const apiURL = "http://127.0.0.1:8000";
@@ -29,6 +30,8 @@ function App() {
           ...prev,
           { text: "Failed to initialize chatbot. Please try again later.", sender: "bot" }
         ]);
+      } finally {
+        setIsLoading(false);
       }
     };
   
@@ -70,6 +73,16 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen bg-gray-100 p-4 md:p-28">
+      {isLoading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-100 bg-opacity-50 z-50 backdrop-blur-sm">
+          <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg">
+            <div className="flex items-center space-x-2">
+              <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
+              <span className="text-gray-700">Initializing chatbot... please wait.</span>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="flex flex-col h-full w-full bg-white shadow-lg rounded-lg">
         <header className="bg-pink-500 text-white p-4 text-center font-bold rounded-t-lg">
           MADI Chatbot
@@ -111,4 +124,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
